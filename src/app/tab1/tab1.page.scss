@@ -1,4 +1,21 @@
-.welcome-card img {
-  max-height: 35vh;
-  overflow: hidden;
+#echartPie{
+  position: absolute;
+      width: 100%;
+      height: 90%;
+}
+
+.btn{
+  position: relative;
+
+  .mapBtn{
+    position: absolute;
+    right: 2px;
+    top: 2px;
+  }
+
+  .dataBtn{
+    position: absolute;
+    right: 2px;
+    top: 30px;
+  }
 }
