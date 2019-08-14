@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import * as echarts from 'echarts';
-import { isNgTemplate } from '@angular/compiler';
-
 
 @Component({
   selector: 'app-chartdata',

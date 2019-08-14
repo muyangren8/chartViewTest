@@ -3,7 +3,6 @@ import * as echarts from 'echarts';
 import { HttpService } from "../services/http.service";
 import { ModalController } from '@ionic/angular';
 
-
 import { ChartdataComponent } from "../data/chartdata/chartdata.component";
 
 
@@ -45,7 +44,7 @@ export class Tab1Page {
     var nameMap = "ningbo";
     var optionMap = {
       title: {
-        text: '宁波市场大势',
+        text: '宁波市场份额',
       },
       
       visualMap: {

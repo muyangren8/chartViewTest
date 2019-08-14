@@ -13,15 +13,21 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from "@angular/common/http";
 import { HttpService } from "./services/http.service";
 
+import { StorageService } from "./services/storage.service";
+
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot({
+    mode:'ios', //配置 android ios 都使用一个样式
+    backButtonText:"" //配置默认的返回按钮
+  }), AppRoutingModule,HttpClientModule],
   providers: [
     StatusBar,
     SplashScreen,
     HttpService,
+    StorageService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

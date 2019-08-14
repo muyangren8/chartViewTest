@@ -1,9 +1,31 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Two
+      集团签约
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-list>
+    <ion-list-header>选择集团</ion-list-header>
+    <ion-item>
+      <ion-label>请选择</ion-label>
+      <ion-select [(ngModel)]="gid"  (ionChange)="initCust()">
+        <ion-select-option *ngFor="let company of companys" [value]="company.id">{{company.gname}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-list-header>选择客户</ion-list-header>
+    <ion-item>
+      <ion-label>请选择</ion-label>
+      <ion-select [(ngModel)]="chosedCust" (ionChange)="hasCid()">
+        <ion-select-option *ngFor="let cust of custs" [value]="cust">{{cust.cname + ' ' + cust.phone}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="toSign()" expand="block" color="danger" class="sign_btn" disabled="true" #signBtn>
+    进行签约
+  </ion-button>
+</ion-content>
