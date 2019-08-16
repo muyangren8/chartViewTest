@@ -7,21 +7,19 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>选择集团</ion-list-header>
+  <ion-list lines="none">
     <ion-item>
-      <ion-label>请选择</ion-label>
-      <ion-select [(ngModel)]="gid"  (ionChange)="initCust()">
+      <ion-label>选择集团</ion-label>
+      <ion-select [(ngModel)]="gid"  (ionChange)="initCust()" placeholder="请选择" cancelText="取消" okText="确认">
         <ion-select-option *ngFor="let company of companys" [value]="company.id">{{company.gname}}</ion-select-option>
       </ion-select>
     </ion-item>
   </ion-list>
-  <ion-list>
-    <ion-list-header>选择客户</ion-list-header>
+  <ion-list lines="none">
     <ion-item>
-      <ion-label>请选择</ion-label>
-      <ion-select [(ngModel)]="chosedCust" (ionChange)="hasCid()">
-        <ion-select-option *ngFor="let cust of custs" [value]="cust">{{cust.cname + ' ' + cust.phone}}</ion-select-option>
+      <ion-label>选择客户</ion-label>
+      <ion-select [(ngModel)]="cid" (ionChange)="hasCid()" placeholder="请选择" cancelText="取消" okText="确认">
+        <ion-select-option *ngFor="let cust of custs" [value]="cust.id">{{cust.cname + ' ' + cust.phone}}</ion-select-option>
       </ion-select>
     </ion-item>
   </ion-list>

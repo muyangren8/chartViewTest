@@ -18,4 +18,14 @@ export class HttpService {
     });
   }
 
+  ajaxPost(url: string, json: object) {
+    return new Promise((resove, reject) => {
+      this.httpclient.post(url, json).subscribe((response) => {
+        resove(response);
+      }, (err) => {
+        reject(err);
+      });
+    });
+  }
+
 }

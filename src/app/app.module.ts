@@ -15,14 +15,18 @@ import { HttpService } from "./services/http.service";
 
 import { StorageService } from "./services/storage.service";
 
-
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,
+
+  ],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot({
-    mode:'ios', //配置 android ios 都使用一个样式
-    backButtonText:"" //配置默认的返回按钮
-  }), AppRoutingModule,HttpClientModule],
+    mode: 'ios', //配置 android ios 都使用一个样式
+    backButtonText: "" //配置默认的返回按钮
+  }),
+    AppRoutingModule,
+    HttpClientModule,
+  ],
   providers: [
     StatusBar,
     SplashScreen,
@@ -32,4 +36,4 @@ import { StorageService } from "./services/storage.service";
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

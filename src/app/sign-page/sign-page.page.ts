@@ -10,14 +10,52 @@ import { NavController } from "@ionic/angular";
 })
 export class SignPagePage implements OnInit {
 
+  private gname: any = "";
+  private cname: any = "";
+  private gid: any = this.storage.get("gid");
+  private cid: any = this.storage.get("cid");
+  private mid: any = this.storage.get("mid");
+  private sign: any = {
+    mid: "",
+    gid: "",
+    gname: "",
+    cid: "",
+    cname: "",
+    planStartDate:{},
+    planEndDate:{},
+    signDateA:{},
+    signDateB:{}
+  }
+
   constructor(public http: HttpService, public storage: StorageService, public nav: NavController) {
+    this.sign.signDateA=new Date().toISOString();
+    this.sign.signDateB=new Date().toISOString();
   }
 
   ngOnInit() {
-    console.log(this.storage.get("cid"));
+    this.initName();
   }
 
-  back(){
+  initName() {
+    this.http.ajaxGet("/sign/company/getCompanyById?id=" + this.gid).then((response: any) => {
+      console.log(response);
+      if (response.status == 200) {
+        this.gname = response.data.gname;
+      } else {
+        alert(response.msg);
+      }
+    });
+    this.http.ajaxGet("/sign/cust/getCustById?id=" + this.cid).then((response: any) => {
+      console.log(response);
+      if (response.status == 200) {
+        this.cname = response.data.cname;
+      } else {
+        alert(response.msg);
+      }
+    });
+  }
+
+  back() {
     this.nav.navigateBack("/tabs/tab2");
   }
 }

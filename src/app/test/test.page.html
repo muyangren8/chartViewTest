@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>test</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="normal-page">
+      <div class="footer">
+        <div class="right-sign">
+          <span style="margin-left: 10px;">签名：</span><span style="float:right;margin-right: 10px;color:blue;" (click)='drawClear()'>清除</span>
+          <signature-pad [options]="signaturePadOptions" id="signatureCanvas"></signature-pad>
+        </div>
+        <button ion-button icon-left [disabled]="startButtonStatus" [block]="true" color="primary" block
+                (click)="signBack()">
+          <ion-icon name="arrow-dropright"></ion-icon>提交
+        </button>
+      </div>
+    </div>
+</ion-content>
