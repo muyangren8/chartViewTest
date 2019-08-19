@@ -5,14 +5,14 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { TestPage } from './test.page';
+import { SignPadPage } from './sign-pad.page';
 import { SignaturePadModule } from 'angular2-signaturepad';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: TestPage
+    component: SignPadPage
   }
 ];
 
@@ -21,12 +21,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes),
-    SignaturePadModule
+    SignaturePadModule,
+    RouterModule.forChild(routes)
   ],
-  declarations: [TestPage],
-  exports:[
-    TestPage
-  ]
+  declarations: [SignPadPage]
 })
-export class TestPageModule {}
+export class SignPadPageModule {}

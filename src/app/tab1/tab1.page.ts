@@ -1,7 +1,8 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import * as echarts from 'echarts';
 import { HttpService } from "../services/http.service";
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
+import { StorageService } from "../services/storage.service";
 
 import { ChartdataComponent } from "../data/chartdata/chartdata.component";
 
@@ -11,13 +12,37 @@ import { ChartdataComponent } from "../data/chartdata/chartdata.component";
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page {
+export class Tab1Page implements OnInit {
+
 
   @ViewChild('echartPie', { static: false }) charts: ElementRef;
 
-  constructor(public http: HttpService, public modalController: ModalController) {
+  constructor(public http: HttpService, public modalController: ModalController, public nav: NavController, public storage: StorageService) {
     console.log(echarts);
 
+  }
+
+  ngOnInit(): void {
+    this.checkLogin();
+  }
+
+  checkLogin() {
+    var token = localStorage.getItem('token');
+    var api = '/sso/checkJwt?token=' + token;
+    this.http.ajaxGet(api).then((response: any) => {
+      console.log(response);
+      if (response.data == true) {
+        alert('token有效');
+      } else {
+        this.goToLogin();
+      }
+    });
+  }
+
+  //跳转到登陆界面
+  goToLogin() {
+    localStorage.setItem('redirect', location.href);
+    window.location.href = 'http://localhost:8200/tabs/tab1?order=checkLogin&redirect=' + window.location.origin + '/redirect';
   }
 
   async showModal() {
@@ -46,7 +71,7 @@ export class Tab1Page {
       title: {
         text: '宁波市场份额',
       },
-      
+
       visualMap: {
         show: true,
         showLabel: true,

@@ -1,9 +1,24 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Three
+      个人中心
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>用户：</ion-label>
+      <ion-text color="dark">{{username}} </ion-text>
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="goToLogin()" class="login_btn" expand="block" color="danger">
+    登陆
+  </ion-button>
+
+  <br>
+  <ion-button (click)="loginOut()" class="login_btn" expand="block" color="dark">
+    注销登陆
+  </ion-button>
+</ion-content>

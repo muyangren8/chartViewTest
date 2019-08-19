@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SignPadComponent } from './sign-pad.component';
+import { SignPadPage } from './sign-pad.page';
 
-describe('SignPadComponent', () => {
-  let component: SignPadComponent;
-  let fixture: ComponentFixture<SignPadComponent>;
+describe('SignPadPage', () => {
+  let component: SignPadPage;
+  let fixture: ComponentFixture<SignPadPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SignPadComponent ],
+      declarations: [ SignPadPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SignPadComponent);
+    fixture = TestBed.createComponent(SignPadPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

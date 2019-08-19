@@ -6,6 +6,11 @@
       </ion-button>
     </ion-buttons>
     <ion-title>集团5G通信服务战略协议</ion-title>
+    <ion-buttons slot="end">
+        <ion-button (click)="doSign()">
+          提交
+        </ion-button>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -41,11 +46,13 @@
       <p
         style="font-size:14px; line-height:150%; margin:0px; orphans:0; text-align:justify; text-indent:10px; widows:0">
         <span style="font-family:仿宋; font-size:14px;float: left;">
-          <ion-datetime style="padding: 0px;font-family:仿宋;" class="datetime" displayFormat="YYYY年MM月DD日" placeholder="点击选择合同起始日期" [(ngModel)]="sign.planStartDate"></ion-datetime>
+          <ion-datetime style="padding: 0px;font-family:仿宋;" class="datetime" displayFormat="YYYY年MM月DD日" pickerFormat="YYYY-MM-DD"
+            placeholder="点击选择合同起始日期" [(ngModel)]="sign.planStartDate"></ion-datetime>
         </span>
         <span style="font-family:仿宋; font-size:14px;float:left">至</span>
         <span style="font-family:仿宋; font-size:14px;float:left">
-          <ion-datetime style="padding: 0px;font-family:仿宋;" class="datetime" displayFormat="YYYY年MM月DD日" placeholder="点击选择合同截至日期" [(ngModel)]="sign.planEndDate"></ion-datetime>
+          <ion-datetime style="padding: 0px;font-family:仿宋;" class="datetime" displayFormat="YYYY年MM月DD日" pickerFormat="YYYY-MM-DD"
+            placeholder="点击选择合同截至日期" [(ngModel)]="sign.planEndDate"></ion-datetime>
         </span>
         <br>
         <!-- <span style="font-family:仿宋; font-size:14px;float:right"> </span> -->
@@ -146,17 +153,27 @@
         <span style="font-family:仿宋; font-size:14px">甲方：（盖章） </span><br>
         <span style="font-family:仿宋; font-size:14px"></span><br>
         <span style="font-family:仿宋; font-size:14px"></span><br>
-        <span style="font-family:仿宋; font-size:14px">甲方代表：     </span><br>
+        <span style="font-family:仿宋; font-size:14px">甲方代表：</span><br>
+        <ion-button (click)="toSignA()" *ngIf="!sign.signatureImageA" color="danger" size="small">
+          点击签名
+        </ion-button>
+        <img [src]="sign.signatureImageA" *ngIf="sign.signatureImageA" (click)="toSignA()" />
         <span style="font-family:仿宋; font-size:14px">
-          <ion-datetime style="padding-left: 0px;font-family:仿宋" displayFormat="YYYY年MM月DD日"  [(ngModel)]="sign.signDateA" readonly class="datetime"></ion-datetime>
+          <ion-datetime style="padding-left: 0px;font-family:仿宋" displayFormat="YYYY年MM月DD日"
+            [(ngModel)]="sign.signDateA" readonly class="datetime"></ion-datetime>
         </span>
       </p>
       <p style="width:47%;font-size:14px;line-height:150%;margin:0px;widows:0;float: right">
         <span style="font-family:仿宋; font-size:14px">乙方：（盖章）</span><br>
         <span style="font-family:仿宋; font-size:14px">中国移动通信集浙江有限公司宁波分公司</span><br>
         <span style="font-family:仿宋; font-size:14px;">乙方代表：</span><br>
+        <ion-button (click)="toSignB()" *ngIf="!sign.signatureImageB" color="danger" size="small">
+          点击签名
+        </ion-button>
+        <img [src]="sign.signatureImageB" *ngIf="sign.signatureImageB" (click)="toSignB()" />
         <span style="font-family:仿宋; font-size:14px">
-          <ion-datetime style="padding-left: 0px;font-family:仿宋" displayFormat="YYYY年MM月DD日"  [(ngModel)]="sign.signDateB" readonly class="datetime"></ion-datetime>
+          <ion-datetime style="padding-left: 0px;font-family:仿宋" displayFormat="YYYY年MM月DD日"
+            [(ngModel)]="sign.signDateB" readonly class="datetime"></ion-datetime>
         </span>
       </p>
       <p style="font-size:14px; line-height:130%; margin:0px; orphans:0; text-align:justify; widows:0">

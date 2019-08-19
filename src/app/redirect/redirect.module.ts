@@ -5,12 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SignPagePage } from './sign-page.page';
+import { RedirectPage } from './redirect.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: SignPagePage
+    component: RedirectPage
   }
 ];
 
@@ -21,8 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [SignPagePage,],
-  entryComponents: []//引入组件
-
+  declarations: [RedirectPage]
 })
-export class SignPagePageModule {}
+export class RedirectPageModule {}
